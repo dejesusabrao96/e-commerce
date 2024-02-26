@@ -1,0 +1,161 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section>
+  <div class="container mt-5 border border-dark p-3">
+       <div class="row">
+         <div class="card col-lg-5">
+         	<!-- <div class="card-header d-flex justify-content-end text-center">
+        </div> -->
+             <div class="col-lg-12">
+              <h6 align="center">Total  Sasan Tuir Tipo Sasan</h6>
+                <div class="table-responsive">
+                <table id="example1" border="1"  class="table table-bordered  w-100">
+                          <tr class="text-center">
+                            <th rowspan="2">Nu</th>
+                            <th rowspan="2">Tipu Sasan</th>
+                            <th colspan="3">Total Dadus Tuir Nia estatus</th>
+                          </tr>
+                          <tr class="text-center"> 
+                            <td><i class="">Paid</i></td>
+                            <td><i class="">Processa</i></td>
+                            <td>Panding</td>
+                          </tr>
+                {% for xx in loopingCategoory %}
+                <tr class="text-center">
+                  <td>{{forloop.counter}}</td>
+                  <th>{{xx.name}}</th> 
+                  <td>{% if xx.total1 %}{{xx.total1}}{% else %} 0 {% endif %}</a></td>
+                  <td>{% if xx.total2 %}{{xx.total2}}{% else %} 0 {% endif %}</a></td>
+                  <td>{% if xx.total3 %}{{xx.total3}}{% else %} 0 {% endif %}</a></td>
+                  
+                </tr>
+                {% endfor %}
+                
+                <tfoot>
+                  <tr ><th colspan="2">Total:</th>
+                      <td  class="text-center" >{{totalFKAidosusM}}</td>
+                      <td class="text-center" >{{totalFKAidosusF}}</td>
+                      <td class="text-center" >{{totalFKAidosus}}</td>
+                  </tr>
+                </tfoot>
+                </table>
+              </div>
+            </div> 
+           </div>
+        <div class="card col-lg-7">
+          <div class="card-header d-flex justify-content-start text-center">
+            <div class="text align center"><h4>RELATORIU DADUS TOTAL SASAN NE'EBE ORDER ONA TUIR TIPU SASAN</h4>
+            </div>
+          </div>
+          <p></p>
+              <div class="card-body">
+               <div class="col-lg-12 text-center">
+                <div class="col-md">
+                 <div class="card text-center text-dark mb-4">
+                   <div class="card-header" id="s_boxs">
+                    <h6 class="card-title text-center">Grafiku Sasan Order Ona Tuir Tipo Sasan </h6></div>
+                    <div id="reportsChart8" style="height: 250px;" class="echart"></div>
+                  </div>
+                </div>
+              </div>
+             </div>
+             </div>
+
+             <div class="col-sm-12">
+              <h5 align="center">Total Osan Order  Tuir Fulan iha Tinan {{currentYear}}</h5><hr/>
+            <div id="container" style="width: 100%; height: 300px;">
+              <canvas id="gbloodbankedusedoutstockbankthisyear_data"></canvas>
+            </div>
+          </div><!--end col--> 
+             <div class="col-sm-12">
+              <h5 align="center">Total Osan Order  Tuir  Tinan</h5><hr/>
+            <div id="container" style="width: 100%; height: 300px;">
+              <canvas id="gbloodbankedusedoutstockbankbyyear_data"></canvas>
+            </div>
+          </div><!--end col-->
+            <div class="col-sm-7">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 align="center">Total Osan tuir fulan iha tinan {{currentYear}}</h5><hr/>
+                      <section id='no-more-tables'>
+                        <table id="#" class="table table-sm" style="width:100%">
+                          <tr class="text-center">
+                            <th>Nu</th>
+                            <th>Fulan</th>
+                            <th>Paid</th>
+                            <th>Process</th>
+                            <th>Panding</th>
+                          </tr>
+                          {% for data in dadus_tinan_agora %}
+                          <tr class="text-center">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>{{data.3}}</td>
+                            <td>{{data.4}}</td>
+                          </tr>
+                          {%endfor%}
+                        </table>
+                      </section>
+                    </div>
+                  </div>
+                </div> <!--  end col -->
+                <hr>
+                  <div class="col-sm-5">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 align="center">Total Osan  tuir tinan  </h5><hr/>
+                      <table id="#" class="table table-sm" style="width:100%">
+                          <tr class="text-center">
+                            <th>Nu</th>
+                            <th>Tinan</th>
+                            <th>Paid</th>
+                            <th>Process</th>
+                            <th>Panding</th>  
+                          </tr>
+                          {% for data in dadus_pakote_tuir_tinan %}
+                          <tr class="text-center">
+                            <td>{{forloop.counter}}</td>
+                            <td>{{data.0}}</td>
+                            <td>{{data.1}}</td>
+                            <td>{{data.2}}</td>
+                            <td>{{data.3}}</td>
+                          </tr>
+                          {%endfor%}
+                        </table>
+                    </div>
+                  </div>
+                </div> <!-- end col -->
+        </div>
+       </div>     
+    </section>
+<script src="{% static 'chart.js/Chart.min.js'%}"></script>
+<script src="{% static 'main/js/jquery.min.js' %}"></script>
+<script src="{% static 'js/apexcharts.min.js' %}"></script>
+<script src="{% static 'Charts/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<script type="text/javascript">{% include 'charts-js/sharts-category-product.js' %}</script>
+
+<script type="text/javascript">
+{% include 'chart_js_api/myoption.js' %}
+{% include 'chart_js_api/product_transaction_is_paid_this_year.js' %}
+{% include 'chart_js_api/blood_transaction_stock_by_year.js' %}
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="{% static 'bootstrap/apexcharts.min.js' %}"></script>
+<script src="{% static 'chart.js/Chart.bundle.min.js' %}"></script>
+<script src="{% static 'chart.js/echarts.min.js' %}"></script>
+      
+{%endblock%}
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            
+        });
+    } );
+</script>
+{% endblock %} 

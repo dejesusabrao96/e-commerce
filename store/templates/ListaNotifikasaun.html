@@ -1,0 +1,40 @@
+<!-- daftar_notifikasi.html -->
+{% extends 'base.html' %}
+{% block content %}
+
+{% load cart %}
+{% load custom_filter %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Notifikasi</title>
+    <!-- Tambahkan link ke Bootstrap dan Font Awesome di sini jika belum dilakukan di file base.html -->
+    <!-- di bagian head -->
+
+</head>
+<body>
+
+
+<h1>Lista Notifikasaun <i class="fas fa-bell"></i></h1>
+
+{% if notifikasi %}
+    <ul class="list-group">
+        {% for notif in notifikasi %}
+            <li class="list-group-item">
+                {% if notif.status %}
+                   <a href="{%url 'notifDetailOrderCostumers' notif.id %}"> <i class="fas fa-check-circle text-success">{{ notif.product.name }} Ne'ebe Ita Order iha {{notif.date}} Processa Hela Hein Kontaktu</i>
+            </li>
+            {%endif%}
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Laiha Notifikasaun ida.</p>
+{% endif %}
+{%endblock%}
+
+<!-- Tambahkan script Bootstrap dan Font Awesome jika belum dilakukan di file base.html -->
+</body>
+</html>

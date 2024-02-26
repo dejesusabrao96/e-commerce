@@ -1,0 +1,124 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+	<section>
+        <div class="container mt-4 border border-danger p-3">
+          <!-- Page Header-->
+          <header> 
+            <ol class="breadcrumb mb-1 mt-1">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Varanda</a></li>
+              {% if page == "form" %}
+              <li class="breadcrumb-item"><a href="{% url 'Categgory_list' %}">{{title}}</a></li>
+              {% endif %}
+              <li class="breadcrumb-item " ><a href="{% url 'Categgory_list' %}">{{title|upper}} </a></li>
+               <li class="breadcrumb-item " ><span class="badge badge-danger">{{legend|upper}}</span></li>
+            </ol>
+          </header>
+                    {% if messages %}
+                        {% for message in messages %} 
+                            <div id="divmessage" class="alert alert-{{ message.tags }} alert-dismissable">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+          {% if page == "list" %}
+          <div class="row">
+             {% include 'produto/conf_side/conf_list.html' %}
+             <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                <div class="d-flex justify-content-end">
+                <a href="{%url 'addCategory' %}" class="btn btn-sm btn-primary mb-2"><i class="fa fa-plus-square"></i> Registu categoria</a> 
+                 </div>  
+                 <div class="d-flex justify-content-start mt-2">
+                </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="example1"  class="table table-hover table-striped">
+                      <thead >
+                        <tr>
+                          <th>Nu</th>
+                          <th class="text-center"><i class="fa fa-user"></i></th>
+                          <th>Naran Sasan</th>
+                          <th>Presu </th>
+                          <th>Kategoria</th>
+                         <th>#</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for data in prodto %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td class="text-center">{% if data.image %}<a href="{{data.image.url}}" target="_blank"><img src="{{data.image.url}}" width="50px" height="50px"></a>{%else%}{%endif%}</td>
+                          <td> <a href="">{{ data.name }}</td></td>
+                          <td>$$.{{ data.price }}</td>
+                          <td>{{ data.category }}</td>
+                          <td>
+                            <div class="d-flex">
+                              <div class="flex-fill"><a href="{% url 'updateProduct' data.id %}" class="btn btn-sm btn-info" title="Update"><i class="fa fa-edit"></i></a>
+                              </div>
+                              <div class="flex-fill">
+                              <div class="flex-fill"> <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-{{ data.id }}" style="text-decoration: none"><i class="fa fa-trash"></i></button>
+                              </div>
+                            </div>
+                          </div>
+                           </td>  
+                          <div class="modal fade" id="delete-{{ data.id}}"><!-- modal -->
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Delete Product</h4>
+                                  <button type="button" class="close" data-dismiss="modal">X</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  Ita Boot hakarak hamoos Sasan {{data.name}}?
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                  <a href="{% url 'DeleteProduct' data.id %}" class="btn btn-info">Yes</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div><!-- endmodal -->
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+    </div>
+          {%endif%}
+          {% if page == "form" %}
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between text-center">
+                </div>
+                <div class="card-body">
+                  {% csrf_token %}
+                  {% crispy form %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+        </div>
+      </section>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example1').removeAttr('width').DataTable( {
+            
+        });
+    } );
+</script>
+{% endblock %}

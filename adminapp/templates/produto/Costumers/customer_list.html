@@ -1,0 +1,60 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% block content %}
+ 
+    <header> 
+      <ol class="breadcrumb mb-1 mt-1">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Varanda</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Lista Costumers</li>
+      </ol>
+    </header>
+    <div class="row">
+    <div class="col-sm-12">
+      <div class="card shadow-lg pt-1 border-danger rounded">
+        <div class="card-header">{{ title }}</div>
+        <div class="card-body">
+                  <section id='no-more-tables'>
+                    <table id="example"  class="table table-hover table-striped">
+                      <thead>
+                         <tr>
+                            <th scope="col">Nu</th>
+                            <th scope="col">Naran Costumers</th> 
+                            <th scope="col">Nu. Telefone</th>
+                            <!-- <th scope="col">Hela fatin</th> -->
+                            <th scope="col">Email</th>
+                            <!-- <th scope="col">Password</th> -->
+                            <th scope="col">#</th> 
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% for customer in customers %}
+                            <tr>
+                              <th scope="row">{{ forloop.counter }}</th>
+                              <td>{{ customer.first_name }} {{ customer.last_name }}</td>
+                              <td>{{ customer.phone }}</td>
+                              <!-- <td>{{ customer.address }}</td> -->
+                              <td>{{ customer.email }}</td>
+                              <!-- <td>{{ customer.password }}</td>  -->
+
+                          <td>
+                              <div class="flex-fill"><a href="{% url 'customer_detail' customer.id %}" class="btn btn-sm btn-danger" title="Detalllu Order Kostumers"><i class="fa fa-eye">Detallu Orders</i></a>
+                              </div>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </section>
+        </div> <!--end card-body-->
+      </div> <!--end card-->
+    </div> <!--end col-->
+  </div> <!--end row-->
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            
+        });
+    } );
+</script>
+{% endblock %}
