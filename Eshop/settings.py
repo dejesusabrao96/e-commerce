@@ -187,3 +187,7 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
         message_constants.SUCCESS: 'success',
         message_constants.WARNING: 'warning',
         message_constants.ERROR: 'danger',}
+
+# teste teste tsetes
+# Activate Django-Heroku
+django_heroku.setting(locals())
