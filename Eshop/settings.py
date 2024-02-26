@@ -191,4 +191,4 @@ MESSAGE_TAGS = {message_constants.DEBUG: 'debug',
 # teste teste tsetes
 # hello world
 # Activate Django-Heroku
-django_heroku.setting(locals())
+django_heroku.settings(locals())
