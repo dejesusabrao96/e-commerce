@@ -1,2 +1,1 @@
-web: gunicorn Eshop.wsgi --log-file -
-worker: celery -A Eshop worker --loglevel=info
+web: python manage.py migrate && python manage.py collectstatic --no-input && gunicorn Eshop.wsgi
