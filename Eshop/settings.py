@@ -26,7 +26,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG','True')=="True"
+# DEBUG = os.environ.get('DEBUG','True')=="True"
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'localhost:8000']
