@@ -27,7 +27,9 @@ SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
+# ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'localhost:8000']
+
 # ALLOWED_HOSTS = []
 
 
@@ -97,26 +99,26 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'db_store',    # Nama database
-#         'USER': 'root',    # username database
-#         'PASSWORD': 'aries', # password database
-#         'HOST': 'localhost',
-#         'PORT': '3306',
-#         'OPTIONS': {        # ini optional jika ada error (mysql.002)
-#            'autocommit' : True
-#         }
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
-# } 
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_store',    # Nama database
+        'USER': 'root',    # username database
+        'PASSWORD': 'Watafanu@1996', # password database
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {        # ini optional jika ada error (mysql.002)
+           'autocommit' : True
+        }
+    }
+} 
 ## to'o iha nee
 
 
