@@ -110,6 +110,8 @@ DATABASES = {
         'NAME': 'db_store',    # Nama database
         'USER': 'root',    # username database
         'PASSWORD': 'aries', # password database
+        'HOST': 'localhost',
+        'PORT': '3306',
         'OPTIONS': {        # ini optional jika ada error (mysql.002)
            'autocommit' : True
         }
