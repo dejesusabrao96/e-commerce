@@ -28,14 +28,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-g=jzhv5zv8nxar2z0jpv#jv-$o*p(+e597*wgkau$gc&7v*m4e')
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
+# ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = os.environ.get('DEBUG','True')=="True"
 # DEBUG = True
 
-# ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
+ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
 # ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'localhost:8000']
 
 # ALLOWED_HOSTS = []
