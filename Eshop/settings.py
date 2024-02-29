@@ -46,8 +46,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
 
 # django deployment tutorial for free 
 # https://www.youtube.com/watch?v=FJBTwa0R_5g
-# On render
-# https://dashboard.render.com/web/srv-cnf92ii0si5c739ko4k0/deploys/dep-cnfb8qgl6cac73a0e04g
+
 
 
 # Application definition
@@ -105,13 +104,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Eshop.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-
-# SECRET_KEY
-# mjqm-1#!iro7a8-3%e*mdwb0x42^7zl=n@8=f1krl9%l@fv0u@
 
 if not DEBUG:
          DATABASES = {
