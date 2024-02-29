@@ -97,26 +97,26 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_store',    # Nama database
-        'USER': 'root',    # username database
-        'PASSWORD': 'aries', # password database
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {        # ini optional jika ada error (mysql.002)
-           'autocommit' : True
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-} 
+}
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'db_store',    # Nama database
+#         'USER': 'root',    # username database
+#         'PASSWORD': 'aries', # password database
+#         'HOST': 'localhost',
+#         'PORT': '3306',
+#         'OPTIONS': {        # ini optional jika ada error (mysql.002)
+#            'autocommit' : True
+#         }
+#     }
+# } 
 ## to'o iha nee
 
 
