@@ -107,12 +107,12 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 #         }
 # else:
 
-    # DATABASES = {
-    #     'default': {
-    #         'ENGINE': 'django.db.backends.sqlite3',
-    #         'NAME': BASE_DIR / 'db.sqlite3',
-    #     }
-    # }
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 # DATABASES = {
 #     'default': {
@@ -127,19 +127,19 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 #         }
 #     }
 # } 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'db_store_snby',    # Nama database
-        'USER': 'db_store_snby_user',    # username database
-        'PASSWORD': 'NMQmQOJOqVrvrqSCtTwW1o4M5XCQ6iht', # password database
-        'HOST': 'dpg-cng0tpun7f5s73fc28jg-a',
-        'PORT': '5432',
-        'OPTIONS': {        # ini optional jika ada error (mysql.002)
-           'autocommit' : True
-        }
-    }
-} 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'db_store_snby',    # Nama database
+#         'USER': 'db_store_snby_user',    # username database
+#         'PASSWORD': 'NMQmQOJOqVrvrqSCtTwW1o4M5XCQ6iht', # password database
+#         'HOST': 'dpg-cng0tpun7f5s73fc28jg-a',
+#         'PORT': '5432',
+#         'OPTIONS': {        # ini optional jika ada error (mysql.002)
+#            'autocommit' : True
+#         }
+#     }
+# } 
 ## to'o iha nee
 
 
