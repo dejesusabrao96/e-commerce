@@ -27,8 +27,14 @@ SECRET_KEY = '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
-# ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
+ALLOWED_HOSTS = []
+
+
+# django deployment tutorial for free 
+# https://www.youtube.com/watch?v=FJBTwa0R_5g
+# On render
+# https://dashboard.render.com/web/srv-cnf92ii0si5c739ko4k0/deploys/dep-cnfb8qgl6cac73a0e04g
 
 
 # Application definition
@@ -91,24 +97,24 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'db_store',    # Nama database
-#         'USER': 'root',    # username database
-#         'PASSWORD': '', # password database
-#         'OPTIONS': {        # ini optional jika ada error (mysql.002)
-#            'autocommit' : True
-#         }
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
 #     }
-# } 
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_store',    # Nama database
+        'USER': 'root',    # username database
+        'PASSWORD': 'aries', # password database
+        'OPTIONS': {        # ini optional jika ada error (mysql.002)
+           'autocommit' : True
+        }
+    }
+} 
 ## to'o iha nee
 
 
