@@ -125,7 +125,7 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        # Replace this value with your local database's connection string.
+        # Replace this value with your local database's connection string. copy the Database External URL
         default='postgres://db_store_snby_user:NMQmQOJOqVrvrqSCtTwW1o4M5XCQ6iht@dpg-cng0tpun7f5s73fc28jg-a.oregon-postgres.render.com/db_store_snby',
         conn_max_age=600
     )
