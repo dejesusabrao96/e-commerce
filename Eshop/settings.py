@@ -25,7 +25,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('SECRET_KEY', '-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7')
-SECRET_KEY = ('-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7')
+# SECRET_KEY = ('-95t%=#4o3@l-(-%ok9*h%n3!0(sdchjn%+_$5#umaj-!3bg*7')
+SECRET_KEY = os.environ.get('SECRET_KEY', default='mjqm-1#!iro7a8-3%e*mdwb0x42^7zl=n@8=f1krl9%l@fv0u@')
 
 # SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-g=jzhv5zv8nxar2z0jpv#jv-$o*p(+e597*wgkau$gc&7v*m4e')
 # DEBUG = os.environ.get('DEBUG', 'False') == 'False'
@@ -47,6 +48,7 @@ ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
 
 # django deployment tutorial for free 
 # https://www.youtube.com/watch?v=FJBTwa0R_5g
+
 
 
 
@@ -112,11 +114,21 @@ WSGI_APPLICATION = 'Eshop.wsgi.application'
 #     }
 # else:
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        # Replace this value with your local database's connection string.
+        default='postgres://db_store_snby_user:NMQmQOJOqVrvrqSCtTwW1o4M5XCQ6iht@dpg-cng0tpun7f5s73fc28jg-a.oregon-postgres.render.com/db_store_snby',
+        conn_max_age=600
+    )
 }
 
 # DATABASES = {
