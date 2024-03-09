@@ -230,9 +230,9 @@ CKEDITOR_CONFIGS = {
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-MEDIA_URL = "/image/download/"
-MEDIA_ROOT = BASE_DIR
+# STATIC_URL = '/static/'
+# MEDIA_URL = "/image/download/"
+# MEDIA_ROOT = BASE_DIR
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 from django.contrib.messages import constants as message_constants
