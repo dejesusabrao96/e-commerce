@@ -215,12 +215,12 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-# MEDIA_URL = '/media/'
-
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-MEDIA_ROOT = '/media/uploads/products/'  # Adjust the path as needed
 MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# MEDIA_ROOT = '/app/media/'  # Adjust the path as needed
+# MEDIA_URL = '/media/'
 
 # CKEditor Settings
 CKEDITOR_UPLOAD_PATH = 'uploads/'
