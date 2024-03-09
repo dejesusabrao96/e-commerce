@@ -37,8 +37,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='mjqm-1#!iro7a8-3%e*mdwb0x42^7
 # DEBUG = os.environ.get('DEBUG','True')=="True"
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1',"e-commercetls.onrender.com"]
-# ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'localhost:8000']
+ALLOWED_HOSTS = ["e-commercetls.onrender.com"]
 
 # ALLOWED_HOSTS = []
 
