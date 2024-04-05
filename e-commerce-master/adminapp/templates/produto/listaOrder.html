@@ -1,0 +1,137 @@
+{% extends "main/layout.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load custom_filter %}
+{% block content %}
+  <section>
+        <div class="container mt-5 border border-info p-3">
+          <header> 
+            <ol class="breadcrumb mb-1 mt-1">
+              <li class="breadcrumb-item"><a href="{% url 'home' %}">Varanda</a></li>
+              {% if page == "form" %}
+              <li class="breadcrumb-item"><a href="#">Lista  Sasan</a></li>
+              {% endif %}
+              
+              <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+            </ol>
+          </header>
+                    {% if messages %}
+                        {% for message in messages %} 
+                            <div id="divmessage" class="alert alert-{{ message.tags }} alert-dismissable">
+                              <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                              {{message}}
+                            </div>
+                        {% endfor %}
+                    {% endif %}         
+          {% if page == "list" %}
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="example"  class="table table-hover table-striped">
+                      <thead >
+                        <tr>
+                          <th>Nu</th>
+                          <th class="text-center"><i class="fa fa-user"></i></th>
+                          <th >Naran Kostumer</th>
+                          <th >Nu.Telefone</th>
+                          <th>Naran Sasan</th>
+                          <th>Presu </th>
+                          <th>Quantidade</th>
+                          <!-- <th>Total</th> -->
+                          <th>Estatus</th>
+                         <th>#</th>
+                        </tr>
+                      </thead>
+                       <tbody>
+                        {% for data in order %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td class="text-center">{% if data.product.image %}<a href="{{data.product.image.url}}" target="_blank"><img src="{{data.product.image.url}}" width="50px" height="50px"></a>{%else%}{%endif%}</td>
+                          <td> {{ data.customer.first_name }}{{ data.customer.last_name }}</td>
+                          <td>+670-{{ data.phone }}</td>
+                          <td>{{ data.product.name }}</td>
+                          <td>$$.{{ data.price }}</td>
+                          <td>{{ data.quantity }}</td>
+                            {% if  data.status == True and data.is_sent == False %}
+                            <td><small class="badge badge-success">Prosesu..</small></td>
+                            {% elif data.is_sent == True %}
+                                <td><small class="badge badge-danger">Paid..</small></td>
+                            {% elif data.status == False %}
+                            <td><small class="badge badge-warning">Pending</small></td>
+                            {% endif %}
+                            <td>
+                          <td>
+                            <div class="d-flex">
+                              <div class="flex-fill"><a href="{% url 'notifDetailOrder' data.id %}" class="btn btn-sm btn-info" title="Detalllu"><i class="fa fa-eye"></i></a>
+                              </div>
+                              <div class="flex-fill">
+                              <div class="flex-fill"> <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#delete-{{ data.id }}" style="text-decoration: none"><i class="fa fa-trash"></i></button>
+                              </div>
+                            </div>
+                          </div>
+                           </td>  
+                          <div class="modal fade" id="delete-{{ data.id}}"><!-- modal -->
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 class="modal-title">Delete Lista  Order</h4>
+                                  <button type="button" class="close" data-dismiss="modal">X</button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                  Ita Boot hakarak hamoos dadus order  {{ data.customer.first_name }}?
+                                </div>
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                  <a href="{% url 'DeleteOrders' data.id %}" class="btn btn-info">Yes</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div><!-- endmodal -->
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+           </div>
+          {%endif%}
+          {% if page == "form" %}
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header d-flex justify-content-between text-center">
+                </div>
+                <div class="card-body">
+                  {% csrf_token %}
+                  {% crispy form %}
+                </div>
+              </div>
+            </div>
+          </div>
+          {%endif%}
+        </div>
+
+      </section>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            
+        });
+    } );
+      //load Imagen
+            function myFunction() {
+              var image = document.getElementById("output");
+              image.src = URL.createObjectURL(event.target.files[0]);
+            }
+</script>
+{% endblock %}

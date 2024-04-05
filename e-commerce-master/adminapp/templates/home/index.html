@@ -1,0 +1,12 @@
+{% extends 'main/layout.html' %} 
+{% load static %}
+
+{% block content %}
+	{% if user.is_authenticated %}
+		{% if user.groups.all.0.name == 'Tesoreira' %}
+			{% include 'home/indexTesoreira.html' %}
+		{% elif user.groups.all.0.name == 'admin' %}
+			{% include 'home/indexAdminNacional.html' %}
+		{% endif %}
+	{% endif %}
+{% endblock %}

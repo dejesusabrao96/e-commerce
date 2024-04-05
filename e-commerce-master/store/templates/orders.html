@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load cart %}
+{% load custom_filter %}
+<div class="container">
+   <div class="border rounded p-4 m-4">
+        <p class="display-4 pl-4 ml-4">Ita Bo'ot Nia Lista Orders</p>
+        <hr>
+        <table id="example"  class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Image</th>
+                    <th>Produto</th>
+                    <th>Data</th>
+                    <th>Presu</th>
+                    <th>Quantidade</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for data in orders  %}
+                        <tr>
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td class="text-center">{% if data.product.image %}<a href="{{data.product.image.url}}" target="_blank"><img src="{{data.product.image.url}}" width="50px" height="50px"></a>{%else%}{%endif%}</td>
+                          <td>{{ data.product.name }}</td>
+                          <td>{{ data.date }}</td>
+                          <td>${{ data.price }}</td>
+                          <td>{{ data.quantity }}</td>
+                          <td>${{ data.total_price }}</td>
+                            {% if  data.status == True and data.is_sent == False %}
+                            <td><small class="badge badge-success">Prosesu..</small></td>
+                            {% elif data.is_sent == True %}
+                                <td><small class="badge badge-danger">Paid..</small></td>
+                            {% elif data.status == False %}
+                            <td><small class="badge badge-warning">Pending</small></td>
+                            {% endif %}
+                </tr>
+                {% endfor %} 
+            </tbody>
+        </table>
+   </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript">
+    $(document).ready( function () {
+        var table = $('#example').removeAttr('width').DataTable( {
+            
+        });
+    } );
+</script>
+{% endblock %}
